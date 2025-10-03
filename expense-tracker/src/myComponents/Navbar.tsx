@@ -4,11 +4,11 @@ export default function Navbar() {
     return (
 
         <>
-            <nav className="flex justify-between  items-center p-4 shadow-sm">
+            <nav className="flex justify-between  items-center p-4  shadow-sm">
                 <div>
                     <img src="/logo.svg" alt="logo" />
                 </div>
-                <Button>Get started</Button>
+                <Button className="bg-indigo-700 hover:bg-indigo-600">Get started</Button>
 
             </nav>
 

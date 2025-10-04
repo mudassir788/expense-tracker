@@ -33,13 +33,7 @@ export default function Dasboard() {
                 </nav>
             </aside>
 
-            {/* Main Content */}
-            <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
-                <h1 className="text- <CreditCard2xl font-semibold mb-4">Dashboard</h1>
-                <p className="text-gray-700">
-                    This is the main content area. Your text or components go here.
-                </p>
-            </main>
+
         </div>
     );
 }

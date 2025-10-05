@@ -1,39 +1,67 @@
-import { ArrowUpCircle, Home, User, DollarSign, CreditCard } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpCircle, Home, User, DollarSign, CreditCard, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Dasboard() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const handleLinkClick = () => {
+        setIsSidebarOpen(false);
+    };
+
     return (
-        <div className="flex h-screen">
+        <div className="relative flex h-screen">
+            {/* Hamburger Menu */}
+            <button
+                className={`absolute top-0 left-4 bg-gray-200 p-2 rounded-md z-50 transition-transform ${isSidebarOpen ? "translate-x-64" : "translate-x-0"}`}
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+                <Menu size={24} />
+            </button>
+
             {/* Sidebar */}
-            <aside className="w-64 bg-white text- flex flex-col">
-                <div className="p-4 text-2xl font-bold border-b border-gray-700">
-                    Expense Traker
+            <aside
+                className={`bg-white text-black flex flex-col w-64 p-4 fixed top-0 left-0 h-full transition-transform transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} z-40`}
+            >
+                <div className="p-4 text-2xl font-bold border-b border-gray-500">
+                    Expense Tracker
                 </div>
                 <nav className="flex-1 p-4 space-y-4">
-                    <Link to="/#" className="block p-2 rounded hover:bg-indigo-600 hover:text-white text-black">
+                    <Link to="/dashboard" className="block p-2 rounded hover:bg-indigo-500" onClick={handleLinkClick}>
                         <Home size={20} />
                         Dashboard
                     </Link>
-                    <Link to="/budgets" className="block p-2 rounded hover:bg-indigo-600 hover:text-white">
+                    <Link to="/budgets" className="block p-2 rounded hover:bg-indigo-500" onClick={handleLinkClick}>
                         <DollarSign size={20} />
-                        budgets
+                        Budgets
                     </Link>
-                    <Link to="/expense" className="block p-2 rounded hover:bg-indigo-600 hover:text-white">
+                    <Link to="/expense" className="block p-2 rounded hover:bg-indigo-500" onClick={handleLinkClick}>
                         <CreditCard size={20} />
-                        expense
+                        Expense
                     </Link>
-                    <Link to="/upgrade" className="block p-2 rounded hover:bg-indigo-600 hover:text-white">
+                    <Link to="/upgrade" className="block p-2 rounded hover:bg-indigo-500" onClick={handleLinkClick}>
                         <ArrowUpCircle size={20} />
-                        upgrade
+                        Upgrade
                     </Link>
-                    <Link to="/profile" className="block p-2 rounded hover:bg-indigo-600 hover:text-white">
+                    <Link to="/profile" className="block p-2 rounded hover:bg-indigo-500" onClick={handleLinkClick}>
                         <User size={20} />
-                        profile
+                        Profile
                     </Link>
                 </nav>
             </aside>
 
+            {/* Overlay */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-30"
+                    onClick={() => setIsSidebarOpen(false)}
+                ></div>
+            )}
 
+            {/* Main Content */}
+            <div className="flex-1">
+                {/* Content goes here */}
+            </div>
         </div>
     );
 }

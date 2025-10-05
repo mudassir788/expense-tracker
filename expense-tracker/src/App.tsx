@@ -8,7 +8,7 @@ import Expense from "./pages/Expense";
 import Upgrade from "./pages/Upgrade";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import DashboardLayout from "./layouts/DashboardLayout";
+import DashboardLayout from "./layouts/DashBoardLayout";
 
 function App() {
 
@@ -20,13 +20,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
-          < Route path="Dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="budgets" element={<Budgets />} />
           <Route path="expense" element={<Expense />} />
-          <Route path="Upgrade" element={<Upgrade />} />
-          < Route path="Profile" element={<Profile />} />
-
-          {/* Add more pages here */}
+          <Route path="upgrade" element={<Upgrade />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
 

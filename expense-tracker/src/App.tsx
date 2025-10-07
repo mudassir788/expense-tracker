@@ -2,7 +2,7 @@ import Navbar from "./myComponents/Navbar"
 // import Hero from "./myComponents/Hero"
 // import Dasboard from "./myComponents/Dasboard"
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Budgets from "./pages/Budgets";
 import Expense from "./pages/Expense";
 import Upgrade from "./pages/Upgrade";
@@ -20,6 +20,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
+          <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="budgets" element={<Budgets />} />
           <Route path="expense" element={<Expense />} />

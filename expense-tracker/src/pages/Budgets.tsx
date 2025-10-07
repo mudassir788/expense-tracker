@@ -32,6 +32,10 @@ export default function Budgets() {
         }
     };
 
+    // Calculate total budget and total spend dynamically
+    const totalBudget = budgets.reduce((sum, budget) => sum + budget.amount, 0);
+    const totalSpend = budgets.reduce((sum, budget) => sum + budget.totalSpend, 0);
+
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
             {/* Greeting Section */}
@@ -44,11 +48,11 @@ export default function Budgets() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold">Total Budget</h2>
-                    <p className="text-indigo-600 text-2xl">$15100</p>
+                    <p className="text-indigo-600 text-2xl">${totalBudget}</p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold">Total Spend</h2>
-                    <p className="text-indigo-600 text-2xl">$4830</p>
+                    <p className="text-indigo-600 text-2xl">${totalSpend}</p>
                 </div>
                 <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-bold">No. of Budgets</h2>
